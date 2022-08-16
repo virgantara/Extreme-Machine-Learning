@@ -14,4 +14,4 @@ and an output layer.
 
 SFLN can be written mathematically as:
 
-![SFLN](images/sfln.png)
+![SFLN](images/sfln1.png)
