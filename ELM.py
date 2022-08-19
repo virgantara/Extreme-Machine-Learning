@@ -1,13 +1,9 @@
 import numpy as np
+from sklearn.metrics import r2_score,mean_squared_error
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
-def mse(y_true, y_pred):
-    return 0.5 * np.mean((y_true - y_pred)**2)
-
-def mae(y_true, y_pred):
-    return np.mean(np.abs(y_true - y_pred))
 
 class ELM:
 
@@ -33,11 +29,18 @@ class ELM:
         return h.dot(self.beta)
 
     def evaluate(self, x, t):
-        yp = list(self.feedforward(x))
+        yp = self.feedforward(x)
         yt = t
-        y_pred = np.argmax(yp, axis=-1)
-        y_true = np.argmax(yt, axis=-1)
 
-        loss = mse(y_true, y_pred)
-        acc = np.sum(y_pred == y_true) / len(t)
-        return loss, acc
+        if t.shape[1] == 1: #regression
+            r2 = r2_score(yt, yp)
+            mse = mean_squared_error(yt, yp)
+            return r2, mse
+        else:
+            y_pred = np.argmax(yp, axis=-1)
+            y_true = np.argmax(yt, axis=-1)
+
+            loss = mean_squared_error(y_true, y_pred)
+            acc = np.sum(y_pred == y_true) / len(t)
+            return loss, acc
+
