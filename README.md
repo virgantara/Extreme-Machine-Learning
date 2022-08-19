@@ -6,12 +6,12 @@
 ## Iris Flower Classification
 
 In [main.py](main.py), the ELM algorithm is implemented to tackle a task such as Iris flower classification. 
-ELM proposed a concept called Single-hidden Layer Feedforward Network (SFLN).
+ELM proposed a concept called Single-hidden Layer Feedforward Network (SLFN).
 This network is simply a network with only an input layer, a hidden layer, 
 and an output layer. 
 
-## SFLN
+## SLFN
 
-SFLN can be written mathematically as:
+SLFN can be written mathematically as:
 
-![SFLN](images/sfln1.png)
+![SLFN](images/sfln1.png)
